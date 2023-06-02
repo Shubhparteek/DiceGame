@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="text-success fw-bold">{% block title %} Two player Dice Game {% endblock %}</h1>
+    <!-- <h3>Game written in Python.</h3> -->
+   
+        <form action="login" method='POST' class="">
+            <div class="form-row  text-center">
+                <div class="form-group ">
+                    <label class="col-form-label fs-4">Enter First Player's Name:</label>
+                    <input type='text' name='user1' class="form-control" required>
+                 </div>
+            </div>
+            <div class="form-row  text-center">
+                <div class="form-group ">
+                    <label class=" col-form-label fs-4">Enter Second Player's Name:</label>
+                    <input type='text' name='user2' class="form-control" required>
+                </div> 
+            </div>
+        <input type='submit'  class="btn btn-primary" value='Submit'>
+        </form>
+    
+{% endblock %}

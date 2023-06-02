@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <p class="fs-1 text-success fw-bold">{% block title %} DICE GAME {% endblock %}</p>
+    <div class="row text-center">
+        <div class="col">
+            <p class="fs-4">Player1 = {{player1}}</p>
+            <p class="fs-4">Total for {{player1}}= {{score1}} </p>
+        </div>
+
+        <div class="col">
+            <p class="fs-4">Player2 = {{player2}}</p>
+            <p class="fs-4">Total for {{player2}}= {{score2}} </p>
+        </div>
+
+    </div>
+    <div class="col {{session['color']}}">
+        <div  class="row">
+            <p class= "">{{player}}'s turn</p>
+        </div>
+        <div class="row">
+            {% if session.value %}
+            <p><img src="static/{{ session['value'] }}.bmp" /></p>
+            {% endif %}
+        </div> 
+    </div>
+     
+
+    
+    <!-- <p>Total for {{player1}}= {{score1}} </p> -->
+
+        <div class="row">
+        {% if session.winner %}
+            <p  class="fs-2 fw-bold bg-secondary text-white my-3"> &#x1F389; Congratulation {{winner}} Won &#x1F389;</p>
+        </div>
+        {% else %}
+            <div class="row mx-1">
+                <form action="roll" method='POST'>
+                <input  class="btn btn-success" type='submit' value='Roll the dice'>
+                </form>
+            </div>
+            {% if session.value %}
+            <div class="row mx-1">
+                <form action="hold" method='POST'>
+                <input  class="btn btn-warning" type='submit' value='Hold score and pass Turn'>
+                </form>
+            </div>
+            {% endif %}
+        {% endif %}
+        <div class="row mx-1">
+          <b><a href = '/logout'  class="btn btn-danger ">EXIT</a></b>
+        </div>
+        
+{% endblock %}
